@@ -1,0 +1,41 @@
+
+<form [formGroup]="form" *ngIf="user!==undefined">
+    <p>Mettre à jours utilisateur ( CIN: {{user.cin}} )</p>
+
+    <div fxLayout="row">
+
+        <div fxFlex="40%" fxFlex.md="60%" fxFlex.sm="50%" fxFlex.xs="100%">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="CIN" value="user.cin" formControlName="cin"  [type]="'text'">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Nom"  formControlName="nom" value="user.nom" [type]="'text'">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Prenom"    formControlName="prenom" value="user.prenom"  [type]="'text'">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Role</mat-label>
+                <select matNativeControl  formControlName="role" value="user.role" [type]="'role'">
+                    <option value="ChefDeProjet">Chef de projet</option>
+                    <option value="AdminITVermeg">Admin IT Vermeg</option>
+                    <option value="Developpeur">Développeur</option>
+                </select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Password"  value="user.password" formControlName="password" [type]="'password'"
+                       autocomplete="current-password">
+                <mat-icon matSuffix (click)="hideCurrentPassword =!hideCurrentPassword">
+                    {{hideCurrentPassword ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+
+            </mat-form-field>
+
+
+            <button mat-raised-button color="primary" (click)="update()">Modifier</button>
+        </div>
+
+    </div>
+
+</form>

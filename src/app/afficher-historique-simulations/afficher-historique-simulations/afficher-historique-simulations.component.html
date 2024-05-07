@@ -1,0 +1,48 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+
+        <th scope="col">Script</th>
+        <th scope="col">Avec Erreur</th>
+        <th scope="col">Status</th>
+        <th scope="col">Rapport</th>
+        <th scope="col">Date de simulation</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let u of simulations; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+            {{ u.id }}
+        </td>
+        <td>
+            {{ u.script }}
+        </td> <td>
+        {{ u.withError }}
+    </td>
+        <td>{{ u.status }}</td>
+        <td>{{ u.rapport }}</td>
+        <td>{{ u.dateDeSimulation }}</td>
+        <td>
+            <button type="button" class="btn btn-info" (click)="showFile(u)">Afficher fichier</button>
+        </td>  <td>
+            <button type="button" class="btn btn-success" (click)="valider(u)">Valider</button>
+        </td> <td> <button type="button" class="btn btn-danger" (click)="rejeter(u)">Rejeter</button>  </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+            [collectionSize]="collectionSize"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            (pageChange)="refreshHistory()"
+    >
+    </ngb-pagination>
+
+
+</div>

@@ -1,0 +1,71 @@
+<form>
+    <ng-template >Informations de base de données</ng-template>
+    <form class="main" style="position: center">
+        <div class="container px-4">
+    <div class="row gx-5">
+        <div class="col">
+            <div class="p-3 border bg-light">
+                <div class="col">
+                <label>Url</label>
+                <input type="text" class="form-control"  placeholder="Url" [(ngModel)] = "url"  name="url" >
+            </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light"><div class="col">
+                <label>Port</label>
+                <input type="text" class="form-control"  placeholder="port" [(ngModel)] = "port"  name="port" >
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="container px-4">
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <div class="col">
+                            <label  >Utilisateur</label>
+                            <input type="text" class="form-control"  [(ngModel)] = "user"  name="user" placeholder="Utilisateur 1">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <label>Mot de passe</label>
+                        <input type="password" class="form-control"  placeholder="Mot de passe" [(ngModel)] = "password"  name="password" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container px-4">
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <div class="col">
+                <label  >Nom du Driver </label>
+                <select name="drivers" id="lang">
+                    <option *ngFor="let d of drivers" value="d">{{d}}</option>
+                </select>
+            </div>
+        </div>
+                    <div class="p-3 border bg-light">
+                        <div class="col">
+                            <label  >Fichier .sql</label>
+                            <input type="file" (change)="onFileSelected($event)" placeholder=".form-control-lg">
+
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" (click)="doSimulation()">Simuler</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</form>
+
+<div *ngIf="rapport!=undefined">
+    Resultat: {{rapport}}
+</div>

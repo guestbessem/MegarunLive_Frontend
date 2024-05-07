@@ -1,0 +1,46 @@
+<form [formGroup]="form">
+    <p>Créer utilisateur</p>
+
+    <div fxLayout="row">
+
+        <div fxFlex="40%" fxFlex.md="60%" fxFlex.sm="50%" fxFlex.xs="100%">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Email" formControlName="email" [type]="'email'">
+
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="CIN"  formControlName="cin"  [type]="'text'">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Nom"  formControlName="nom"  [type]="'text'">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Prenom"    formControlName="prenom"  [type]="'text'">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Role</mat-label>
+                <select matNativeControl  formControlName="role" [type]="'role'">
+                    <option value="ChefDeProjet">Chef de projet</option>
+                    <option value="AdminITVermeg">Admin IT Vermeg</option>
+                    <option value="Developpeur">Développeur</option>
+                </select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Password"   formControlName="password" [type]="'password'"
+                       autocomplete="current-password">
+                <mat-icon matSuffix (click)="hideCurrentPassword =!hideCurrentPassword">
+                    {{hideCurrentPassword ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+
+
+            </mat-form-field>
+
+
+            <button mat-raised-button color="primary" [disabled]="user.email==null || user.email == undefined " (click)="createUser()">Save</button>
+            <h4 style="color:red">{{message}}</h4>
+        </div>
+
+    </div>
+
+</form>

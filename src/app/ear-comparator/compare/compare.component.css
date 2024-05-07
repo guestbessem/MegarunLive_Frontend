@@ -1,0 +1,85 @@
+.myform-wrapper {
+    margin: 50px;
+    width: 350px;
+}
+.mat-form-field {
+    width: 100%;
+}
+.main {
+    display: flex;
+    align-items: center;
+    width: 90%;
+}
+
+.mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+}
+
+button {
+    width: 30%;
+
+}
+.uploadFile{
+     font-size: 14px; color: rgb(119, 119, 119);
+}
+#fileUpload {
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+.example-tree-invisible {
+    display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+/*
+ * This padding sets alignment of the nested nodes.
+ */
+.example-tree .mat-nested-tree-node div[role=group] {
+    padding-left: 40px;
+}
+
+/*
+ * Padding for leaf nodes.
+ * Leaf nodes need to have padding so as to align with other non-leaf nodes
+ * under the same parent.
+ */
+.example-tree div[role=group] > .mat-tree-node {
+    padding-left: 40px;
+}
+.modified{
+    color: red;
+}
+.equal{
+    color: green;
+}
+
+.my-class{
+    background: white;  font-size: small;
+}
+.my-class ::ng-deep .added{
+    color: green;
+    background: white;
+}
+
+.my-class span .removed{
+    color: red;
+    background: white;
+}
+
+.my-class ::ng-deep .removed {
+    color: red;
+    background: white;
+}

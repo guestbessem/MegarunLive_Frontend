@@ -1,0 +1,112 @@
+<div class="example-input-wrapper" hidden>
+    <label for="duration">Animation duration:</label>
+    <input id="duration" value="1000" type="number" min="0" step="100" #duration>
+</div>
+
+<mat-vertical-stepper [linear]="false" #stepper [animationDuration]="duration.value">
+    <mat-step>
+        <form>
+            <ng-template matStepLabel>Informations de base de données du client !</ng-template>
+            <div style="color:red">Il est strictement interdit à vermeg de se connecter avec ces informations</div>
+
+            <form class="main" style="position: center">
+                <div class="row">
+                    <div class="col">
+                        <label  >Base de données</label>
+                        <input type="text" class="form-control" [(ngModel)] = "dbName"  name="dbName" placeholder="Base de données">
+                    </div>
+                    <div class="col">
+                        <label>Url</label>
+                        <input type="text" class="form-control"  placeholder="Url" [(ngModel)] = "url"  name="url" >
+                    </div>
+                    <div class="col">
+                        <label>Port</label>
+                        <input type="text" class="form-control"  placeholder="port" [(ngModel)] = "port"  name="port" >
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label  >Utilisateur de BD 1 </label>
+                        <input type="text" class="form-control"  [(ngModel)] = "user1"  name="user1" placeholder="Utilisateur 1">
+                    </div>
+                    <div class="col">
+                        <label>Symbole utilisateur 1</label>
+                        <input type="text" class="form-control"  placeholder="Symbole utilisateur 1" [(ngModel)] = "user1_role"  name="user1_role" >
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label  >Utilisateur de BD 2</label>
+                        <input type="text" class="form-control"  [(ngModel)] = "user2"  name="user2" placeholder="Utilisateur 2">
+                    </div>
+                    <div class="col">
+                        <label>Symbole utilisateur 2</label>
+                        <input type="text" class="form-control"  placeholder="Symbole utilisateur 2" [(ngModel)] = "user2_role"  name="user2_role" >
+                    </div>
+                </div>
+            </form>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step >
+        <form>
+            <ng-template matStepLabel>Paramétrage fichier type 1 </ng-template>
+            <div class="row">
+                <div class="col">
+                    <label  >Nom fichier source </label>
+                    <input type="text" class="form-control" [(ngModel)] = "source_File_Name_User_1"  name="source_File_Name_User_1" placeholder="Nom fichier source 1">
+                </div>
+                <div class="col">
+                    <label>Regex fichier 00.sql</label>
+                    <input type="text" class="form-control"  placeholder="Regex fichier 00.sql" [(ngModel)] = "file0_regex_User_1"  name="file0_regex_User_1" >
+                </div>
+                <div class="col">
+                    <label>Regex fichier 01.sql</label>
+                    <input type="text" class="form-control"  placeholder="Regex fichier 01.sql" [(ngModel)] = "file1_regex_User_1"  name="file1_regex_User_1" >
+                </div>
+
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step >
+        <form>
+            <ng-template matStepLabel>Paramétrage fichier type 2 </ng-template>
+            <div class="row">
+                <div class="col">
+                    <label  >Nom fichier source </label>
+                    <input type="text" class="form-control" [(ngModel)] = "source_File_Name_User_2"  name="source_File_Name_User_2" placeholder="Nom fichier source 2">
+                </div>
+                <div class="col">
+                    <label>Regex fichier 10.sql</label>
+                    <input type="text" class="form-control"  placeholder="Regex fichier 10.sql" [(ngModel)] = "file0_regex_User_2"  name="file0_regex_User_2" >
+                </div>
+                <div class="col">
+                    <label>Regex fichier 11.sql</label>
+                    <input type="text" class="form-control"  placeholder="Regex fichier 11.sql" [(ngModel)] = "file1_regex_User_2"  name="file1_regex_User_2" >
+                </div>
+
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Charger Scripts</ng-template>
+        Charger fichier .zip
+        <div>
+            <input type="file" (change)="onFileSelected($event)" placeholder=".form-control-lg" accept=".zip .7z">
+            <button class="btn btn-danger" *ngIf="selectedFile!=undefined && selectedFile!= null" (click)="transformer()">Transformer Script</button>
+
+        </div>
+    </mat-step>
+</mat-vertical-stepper>

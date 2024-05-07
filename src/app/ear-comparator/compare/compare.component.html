@@ -1,0 +1,72 @@
+<mat-tab-group #tabGroup>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">folder</mat-icon>
+            Charger les fichiers EAR
+        </ng-template>
+
+        <div class="form-group" style="position: center">
+            <div class="uploadFile">Selectionner les deux fichiers .ear à comparer </div>
+        </div>
+        <div class="main" style="position: center">
+
+            <form>
+                <div class="container">
+                    <div class="row">
+                        <div *ngIf="!isFile1Valid || !isFile2Valid" class="alert alert-danger" role="alert">
+                            Only .ear files are accepted!
+                        </div>
+                        <div class="col-sm-6" style="border-color: black; background: lightgrey">
+                            <label>Fichier 1</label>
+                            <app-upload-component  class="btn btn-dark" (newFileEvent)="file1change($event)"></app-upload-component>
+
+                        </div>
+                        <div class="col-sm-6" style="border-color: black; background: lightgrey">
+                            <label>Fichier 2</label>
+                            <app-upload-component class="btn btn-dark" (newFileEvent)="file2change($event)"></app-upload-component>
+
+                        </div>
+                        <button type="submit" class="btn btn-danger col-sm" (click)="compare($event,tabGroup)"> <mat-icon>compare_arrows</mat-icon> Comparer</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </mat-tab>
+    <mat-tab  *ngIf="resultFolder!==null && resultFolder!==undefined">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">check</mat-icon> Resultat
+        </ng-template>
+        <div class="main" style="position: center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm" style="border-color: black;">
+                        <div *ngIf="resultFolder!=null ">
+                            <tree-nested-overview-example (contentEmitter)="showContent($event,tabGroup)" [TREE_DATA]="resultFolder"></tree-nested-overview-example>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab  *ngFor="let c of contents" label="{{c.name}}">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon" (click)="closeTab(c)">close</mat-icon>   <mat-icon class="example-tab-icon">file_copy</mat-icon> {{c.name}}
+        </ng-template>
+        <div class="container">
+            <div class="row d-flex flex-wrap-nowrap">
+                <div class="col-md">
+                        <div class="header"> <h1> Fichier 1 </h1></div>
+                            <div  *ngIf="hasContent" #dynamicContentContainer class="my-class" [innerHtml]="c.source"></div>
+                        </div>
+                    <div class="col-md">
+                            <div class="header"> <h1> Fichier 2 </h1></div>
+                                <div  *ngIf="hasContent" #dynamicContentContainer class="my-class" [innerHtml]="c.target"></div>
+                            </div>
+                        </div>
+        </div>
+    </mat-tab>
+
+</mat-tab-group>
+
