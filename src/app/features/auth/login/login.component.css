@@ -1,0 +1,19 @@
+.background-image {
+    background-image: url('C:/Users/besse/OneDrive/Desktop/VERMEGMega/jpeg-optimizer_couverture.jpg'); /* Update with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Adjust as needed */
+    max-width: 100%;  /*  margin-left: -410px; /* Adjust the value as needed */
+    /* or */
+    margin-right: 160px; 
+    float:left;
+    image-rendering: -webkit-optimize-contrast; /* Better image rendering for Webkit browsers */
+    image-rendering: crisp-edges; /* Better image rendering for other browsers */
+    form {
+        display: flex;
+        justify-content: flex-end; /* Aligns form content to the right */
+        margin-right: 100px; 
+    }
+    
+}

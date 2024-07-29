@@ -1,9 +1,12 @@
+/* Styles généraux */
 .navbar-spacer {
   flex: 1 1 auto;
 }
 
 .navbar {
   z-index: 2;
+  background-color: #333; /* Couleur de fond gris foncé pour la barre de navigation */
+  color: #fff; /* Texte en blanc */
 }
 
 .navbar-brand {
@@ -20,6 +23,7 @@
   left: 0;
   right: 0;
 }
+
 .main {
   display: flex;
   align-items: center;
@@ -28,42 +32,57 @@
 
 .navbar-is-mobile .navbar {
   position: fixed;
-  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
 
 .navbar-sidenav-container {
-  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-           causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
 }
 
 .navbar-is-mobile .navbar-sidenav-container {
-  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-           `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
 
-/*Set sidenav width*/
-
+/* Styles pour le sidenav */
 mat-sidenav {
   min-width: 180px !important;
-  border-right: 1px solid #eee;
+  border-right: 1px solid #ccc; /* Bordure gris clair */
   box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
-  /* background-color:rgb(63, 81, 181); */
+  background-color: #f5f5f5; /* Couleur de fond gris très clair pour la barre latérale */
+  color: #333; /* Texte en gris foncé */
 }
 
-/* Set height of wrapper to stop content from moving up & down */
-
-.progress-bar-container {
-  height: 5px;
-}
-
+/* Ajustement des éléments actifs dans la barre latérale */
 a.mat-list-item.active {
-  background: rgba(0, 0, 0, .04);
+  background: rgba(0, 0, 0, .1); /* Fond gris clair pour l'élément actif */
 }
 
 #push-bottom {
   position: absolute;
   bottom: 0;
+}
+
+/* Barre de progression */
+.progress-bar-container {
+  height: 5px;
+}
+
+/* Couleurs des icônes et badges */
+mat-icon {
+  color: #fff; /* Couleur des icônes dans la barre de navigation */
+}
+
+mat-icon.mat-badge {
+  color: #fff; /* Couleur des badges */
+  background-color: #333; /* Couleur de fond gris foncé pour les badges */
+}
+
+/* Menu notifications */
+.mat-menu-content {
+  background-color: #fff; /* Fond blanc pour le menu */
+  color: #333; /* Texte en gris foncé */
+}
+
+.mat-menu-item:hover {
+  background-color: rgba(0, 0, 0, .1); /* Fond gris clair au survol */
 }

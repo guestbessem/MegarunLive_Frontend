@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class ScriptTransformerServiceService {
-  SERVER_URL: string = "http://localhost:8088/ScriptTransformer";
+  SERVER_URL: string = "http://localhost:9003/ScriptTransformer";
 
   constructor(private httpClient:HttpClient ,private router:Router) {
 

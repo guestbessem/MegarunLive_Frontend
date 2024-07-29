@@ -1,7 +1,7 @@
-import { STransformationParameter } from './stransformation-parameter';
+import { STransformationParameters } from './stransformation-parameter';
 
 describe('STransformationParameter', () => {
   it('should create an instance', () => {
-    expect(new STransformationParameter()).toBeTruthy();
+    expect(new STransformationParameters()).toBeTruthy();
   });
 });

@@ -42,6 +42,8 @@ export class CompareComponent {
   file1: File;
 
   file2: File;
+file1Data: Folder[] = [];
+file2Data: Folder[] = [];
 
   [key: string]: any;
 
@@ -99,18 +101,23 @@ export class CompareComponent {
     this.service.getComparisonResult(formData).subscribe((response) => { // @ts-ignore
       let result = (JSON.parse((JSON.stringify(response))));
       this.resultFolder = result.children;
+      this.file1Data = result.file1Data;
+      this.file2Data = result.file2Data;
+      console.log('File 1 Data:', this.file1Data);
+console.log('File 2 Data:', this.file2Data);
       this.contents = [];
       tabGroup.selectedIndex=1;
     });
   }
 
   // @ts-ignore
-  transformData(response: Folder[]) {
-    return response.map((node: Folder) => ({
-      label: node.name,
-      children: node.children ? this.transformData(node.children) : [], expanded: true,
-    }));
-  }
+ transformData(response: Folder[]): TransformedNode[] {
+  return response.map((node: Folder) => ({
+    label: node.name,
+    children: node.children ? this.transformData(node.children) : [],
+    expanded: true,
+  }));
+}
 
   closeTab(c: Contents) {
     this.RemoveElementFromArray(c.name);

@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class SimulerScriptService {
-  SERVER_URL: string = "http://localhost:9003/Simulation";
+  private SERVER_URL = 'http://localhost:9003/Simulation';
 
   constructor(private httpClient:HttpClient ,private router:Router) {
 

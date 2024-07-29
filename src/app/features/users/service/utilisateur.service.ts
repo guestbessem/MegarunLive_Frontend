@@ -8,7 +8,7 @@ import {AuthenticationService} from "../../../core/services/auth.service";
   providedIn: 'root'
 })
 export class UtilisateurService {
-  SERVER_URL: string = "http://localhost:8090/Utilisateur";
+  SERVER_URL: string = "http://localhost:9002/Utilisateur";
    loginAttempts = new Map<string, number>();
 
     constructor(private httpClient: HttpClient, private authService: AuthenticationService) { }
@@ -24,11 +24,10 @@ export class UtilisateurService {
   formData.append("email",email);
   return  this.httpClient.post(this.SERVER_URL+'/email',formData);
   }
-  createUtilisateur(utilisateur:any):Observable<Utilisateur>{
-    let faa = new FormData();
-    faa.append("utilisateur",utilisateur);
-    return this.httpClient.post(this.SERVER_URL+"/add", utilisateur);
+  createUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.httpClient.post<Utilisateur>(this.SERVER_URL + "/add", utilisateur);
   }
+  
 
     deleteUtilisateur(utilisateur:Utilisateur){
         return this.httpClient.post(this.SERVER_URL+"/delete", utilisateur);

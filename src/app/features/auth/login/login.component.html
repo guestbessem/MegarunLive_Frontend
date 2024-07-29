@@ -1,5 +1,5 @@
-<div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
-    <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
+<div class="container login-container  background-image" fxLayout="row" fxLayoutAlign="center center">
+    <form [formGroup]="loginForm" fxFlex="row" fxFlex.sm="50%" fxFlex.xs="90%">
         <mat-card>
             <mat-card-title>MegaraGoLive</mat-card-title>
             <mat-card-subtitle>S'authentifier</mat-card-subtitle>
@@ -28,6 +28,6 @@
             </mat-card-actions>
         </mat-card>
 
-        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+        
     </form>
 </div>
